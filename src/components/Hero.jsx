@@ -28,8 +28,8 @@ export default function Hero() {
   return (
     <section className="relative bg-slate-deep min-h-screen flex items-center">
       {/* Centered container */}
-      <div className="max-w-7xl mx-auto px-5 lg:px-10 w-full py-28 lg:py-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-[80vh]">
+      <div className="max-w-7xl mx-auto px-5 lg:px-10 w-full pt-28 pb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center lg:min-h-[calc(100vh-12rem)]">
           {/* Left: Text Content */}
           <div className="relative z-10">
             {/* Rating badge */}
