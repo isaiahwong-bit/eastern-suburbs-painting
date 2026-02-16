@@ -19,7 +19,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+    <nav aria-label="Main navigation" className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       scrolled
         ? 'bg-white/95 backdrop-blur-md shadow-[0_1px_0_rgba(47,62,70,0.06)]'
         : 'bg-transparent'

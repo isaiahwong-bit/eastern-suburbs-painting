@@ -11,11 +11,13 @@ export default function App() {
   return (
     <>
       <Navbar />
-      <Hero />
-      <TrustBanner />
-      <Services />
-      <Gallery />
-      <Testimonials />
+      <main>
+        <Hero />
+        <TrustBanner />
+        <Services />
+        <Gallery />
+        <Testimonials />
+      </main>
       <Footer />
       <FloatingCTA />
     </>

@@ -75,7 +75,7 @@ function GalleryCard({ item, index }) {
   const isLarge = item.size === 'large';
 
   return (
-    <div
+    <figure
       ref={ref}
       className={`group relative overflow-hidden rounded-2xl cursor-pointer ${isLarge ? 'md:col-span-2 h-[320px] md:h-[380px]' : 'h-[260px] md:h-[380px]'} transition-all duration-700 ${
         inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
@@ -86,7 +86,7 @@ function GalleryCard({ item, index }) {
       <div className="absolute inset-0 img-placeholder">
         <img
           src={item.src}
-          alt={item.label}
+          alt={`${item.label} — ${item.location} painting project by Eastern Suburbs Painting`}
           loading="lazy"
           className="transition-transform duration-700 group-hover:scale-105"
         />
@@ -96,7 +96,7 @@ function GalleryCard({ item, index }) {
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
 
       {/* Caption */}
-      <div className="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-between">
+      <figcaption className="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-between">
         <div>
           <p className="text-white font-serif text-lg font-semibold">{item.label}</p>
           <p className="text-white/60 text-xs tracking-wider uppercase">{item.location}</p>
@@ -104,7 +104,7 @@ function GalleryCard({ item, index }) {
         <div className="w-9 h-9 rounded-full bg-white/15 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
           <ArrowUpRight size={16} className="text-white" />
         </div>
-      </div>
-    </div>
+      </figcaption>
+    </figure>
   );
 }

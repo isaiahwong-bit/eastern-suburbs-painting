@@ -1,5 +1,7 @@
 import { MapPin, Phone, Mail, Clock, ArrowUp, Send } from 'lucide-react';
 
+const inputClass = "w-full bg-white/[0.06] border border-white/[0.08] rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-sage/40 focus:bg-white/[0.08] transition-all";
+
 export default function Footer() {
   return (
     <footer id="contact" className="bg-slate-dark">
@@ -17,21 +19,39 @@ export default function Footer() {
 
           <form className="max-w-lg space-y-4" onSubmit={(e) => e.preventDefault()}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input type="text" placeholder="First Name" className="w-full bg-white/[0.06] border border-white/[0.08] rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-sage/40 focus:bg-white/[0.08] transition-all" />
-              <input type="text" placeholder="Last Name" className="w-full bg-white/[0.06] border border-white/[0.08] rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-sage/40 focus:bg-white/[0.08] transition-all" />
+              <div>
+                <label htmlFor="firstName" className="sr-only">First Name</label>
+                <input id="firstName" name="firstName" type="text" placeholder="First Name" autoComplete="given-name" className={inputClass} />
+              </div>
+              <div>
+                <label htmlFor="lastName" className="sr-only">Last Name</label>
+                <input id="lastName" name="lastName" type="text" placeholder="Last Name" autoComplete="family-name" className={inputClass} />
+              </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input type="email" placeholder="Email" className="w-full bg-white/[0.06] border border-white/[0.08] rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-sage/40 focus:bg-white/[0.08] transition-all" />
-              <input type="tel" placeholder="Phone" className="w-full bg-white/[0.06] border border-white/[0.08] rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-sage/40 focus:bg-white/[0.08] transition-all" />
+              <div>
+                <label htmlFor="email" className="sr-only">Email</label>
+                <input id="email" name="email" type="email" placeholder="Email" autoComplete="email" className={inputClass} />
+              </div>
+              <div>
+                <label htmlFor="phone" className="sr-only">Phone</label>
+                <input id="phone" name="phone" type="tel" placeholder="Phone" autoComplete="tel" className={inputClass} />
+              </div>
             </div>
-            <select className="w-full bg-white/[0.06] border border-white/[0.08] rounded-xl px-4 py-3 text-white/40 text-sm focus:outline-none focus:border-sage/40 focus:bg-white/[0.08] transition-all appearance-none">
-              <option value="" className="bg-slate-dark">Select Service</option>
-              <option value="heritage" className="bg-slate-dark text-white">Heritage Restoration</option>
-              <option value="exterior" className="bg-slate-dark text-white">Modern Facade / Exterior</option>
-              <option value="interior" className="bg-slate-dark text-white">Interior Sanctuary</option>
-              <option value="commercial" className="bg-slate-dark text-white">Commercial</option>
-            </select>
-            <textarea placeholder="Tell us about your project..." rows={3} className="w-full bg-white/[0.06] border border-white/[0.08] rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-sage/40 focus:bg-white/[0.08] transition-all resize-none" />
+            <div>
+              <label htmlFor="service" className="sr-only">Select Service</label>
+              <select id="service" name="service" className="w-full bg-white/[0.06] border border-white/[0.08] rounded-xl px-4 py-3 text-white/40 text-sm focus:outline-none focus:border-sage/40 focus:bg-white/[0.08] transition-all appearance-none">
+                <option value="" className="bg-slate-dark">Select Service</option>
+                <option value="heritage" className="bg-slate-dark text-white">Heritage Restoration</option>
+                <option value="exterior" className="bg-slate-dark text-white">Modern Facade / Exterior</option>
+                <option value="interior" className="bg-slate-dark text-white">Interior Sanctuary</option>
+                <option value="commercial" className="bg-slate-dark text-white">Commercial</option>
+              </select>
+            </div>
+            <div>
+              <label htmlFor="message" className="sr-only">Project details</label>
+              <textarea id="message" name="message" placeholder="Tell us about your project..." rows={3} className="w-full bg-white/[0.06] border border-white/[0.08] rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-sage/40 focus:bg-white/[0.08] transition-all resize-none" />
+            </div>
             <button type="submit" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-sage text-white px-8 py-3.5 rounded-full text-sm font-medium tracking-wide hover:bg-sage-dark transition-all duration-300 hover:shadow-lg hover:shadow-sage/20">
               <Send size={14} />
               Send Request
@@ -42,36 +62,36 @@ export default function Footer() {
         {/* Map + Contact — takes 2 cols */}
         <div className="lg:col-span-2 relative min-h-[360px] lg:min-h-0">
           <iframe
-            title="Service area map"
+            title="Map showing Eastern Suburbs Painting service area around Heathmont, VIC"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25213.53!2d145.22!3d-37.83!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad63b4c4e2b4f7f%3A0x5045675218ce6e0!2sHeathmont%20VIC%203135!5e0!3m2!1sen!2sau!4v1700000000000!5m2!1sen!2sau"
             className="absolute inset-0 w-full h-full border-0 grayscale opacity-50"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />
           {/* Contact overlay card */}
-          <div className="absolute bottom-6 left-6 right-6 lg:right-6 bg-white rounded-2xl p-5 shadow-2xl max-w-sm">
+          <address className="absolute bottom-6 left-6 right-6 lg:right-6 bg-white rounded-2xl p-5 shadow-2xl max-w-sm not-italic">
             <h3 className="font-serif text-slate-deep text-base font-semibold mb-3">Service Area</h3>
             <div className="space-y-2.5">
               <div className="flex items-start gap-2.5">
-                <MapPin size={14} className="text-sage mt-0.5 shrink-0" />
+                <MapPin size={14} className="text-sage mt-0.5 shrink-0" aria-hidden="true" />
                 <p className="text-xs text-warm-gray font-light leading-relaxed">
                   Heathmont, Forest Hill, Ringwood, Vermont, Mitcham & surrounding Eastern Suburbs
                 </p>
               </div>
               <div className="flex items-center gap-2.5">
-                <Phone size={14} className="text-sage shrink-0" />
+                <Phone size={14} className="text-sage shrink-0" aria-hidden="true" />
                 <a href="tel:0400000000" className="text-xs text-slate-deep font-light hover:text-sage transition-colors">0400 000 000</a>
               </div>
               <div className="flex items-center gap-2.5">
-                <Mail size={14} className="text-sage shrink-0" />
+                <Mail size={14} className="text-sage shrink-0" aria-hidden="true" />
                 <a href="mailto:scott@easternsuburbspainting.com.au" className="text-xs text-slate-deep font-light hover:text-sage transition-colors">scott@easternsuburbspainting.com.au</a>
               </div>
               <div className="flex items-center gap-2.5">
-                <Clock size={14} className="text-sage shrink-0" />
+                <Clock size={14} className="text-sage shrink-0" aria-hidden="true" />
                 <p className="text-xs text-warm-gray font-light">Mon–Sat: 7am – 5pm</p>
               </div>
             </div>
-          </div>
+          </address>
         </div>
       </div>
 

@@ -82,27 +82,29 @@ function ReviewCard({ review, index }) {
   const [ref, inView] = useInView({ threshold: 0.2 });
 
   return (
-    <div
+    <article
       ref={ref}
       className={`bg-white/[0.04] border border-white/[0.06] rounded-2xl p-7 lg:p-8 transition-all duration-700 hover:bg-white/[0.07] hover:border-white/[0.1] ${
         inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
       style={{ transitionDelay: `${index * 120}ms` }}
     >
-      <Quote size={24} className="text-sage/30 mb-5" />
+      <Quote size={24} className="text-sage/30 mb-5" aria-hidden="true" />
 
-      <div className="flex gap-0.5 mb-4">
+      <div className="flex gap-0.5 mb-4" aria-label="5 out of 5 stars">
         {[...Array(5)].map((_, i) => <Star key={i} size={13} className="fill-gold text-gold" />)}
       </div>
 
-      <p className="text-white/75 text-sm leading-relaxed font-light mb-6">
+      <blockquote className="text-white/75 text-sm leading-relaxed font-light mb-6">
         "{review.text}"
-      </p>
+      </blockquote>
 
-      <div className="pt-5 border-t border-white/[0.06]">
-        <p className="text-white text-sm font-medium">{review.author}</p>
-        <p className="text-white/35 text-xs tracking-wide mt-0.5">{review.location}</p>
-      </div>
-    </div>
+      <footer className="pt-5 border-t border-white/[0.06]">
+        <cite className="not-italic">
+          <p className="text-white text-sm font-medium">{review.author}</p>
+          <p className="text-white/35 text-xs tracking-wide mt-0.5">{review.location}</p>
+        </cite>
+      </footer>
+    </article>
   );
 }
